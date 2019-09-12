@@ -29,8 +29,6 @@ Alternatively, [download a release](https://github.com/pbraiders/container/relea
 
 I wrote and I use this package for my own projects. And, unfortunately, I do not provide exhaustive documentation. Please read the code and the comments ;)
 
-You can generate documentation using phpdocumentor. It should be installed with [Composer](https://getcomposer.org/).
-
 ## Test
 
 To run the unit tests at the command line, issue `composer install` and then `./vendor/bin/phpunit` at the package root. (This requires [Composer](https://getcomposer.org/) to be available as composer.)
