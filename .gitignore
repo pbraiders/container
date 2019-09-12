@@ -1,6 +1,7 @@
 .vscode/
 /vendor/
 /doc/
+tmp/
 .php_cs.cache
 *.log
 local.*

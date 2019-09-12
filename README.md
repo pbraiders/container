@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/pbraiders/container/master.svg?style=flat-square)](https://travis-ci.com/pbraiders/container.svg?branch=master)
 
-Pbraiders\Container is a factory that creates the PSR-11 PHP-DI container.
+Pbraiders\Container is a factory that create PSR-11 dependency injection container: PHP-DI, League\Container, ...
 
 *Note: I use this package for my own projects, it contains only the features I need.*
 

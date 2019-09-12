@@ -15,9 +15,9 @@ use Psr\Container\ContainerInterface;
 
 /**
  * PHP-DI container factory.
- * Creates and populates a Psr\Container with invokables or factories.
+ * Creates and configures a Psr\Container.
  */
-class PhpDiFactory implements ContainerFactory
+class PhpDiFactory extends AbstractFactory
 {
 
     /**
@@ -32,21 +32,23 @@ class PhpDiFactory implements ContainerFactory
     protected $bCompilationEnabled = true;
 
     /**
-     * Undocumented variable
+     * Directory in which to put the compiled container.
      *
      * @var string
      */
     protected $sCompilationCacheDirectory = '';
 
     /**
-     * Enable the proxies files for performance purpose.
+     * Configure the proxy generation.
+     * For dev environment, use false (default configuration)
+     * For production environment, use true.
      *
      * @var boolean
      */
     protected $bProxyEnabled = true;
 
     /**
-     * Undocumented variable
+     *  Directory where to write the proxies.
      *
      * @var string
      */
@@ -133,6 +135,11 @@ class PhpDiFactory implements ContainerFactory
                 );
             }
             $pBuilder->writeProxiesToFile(true, $this->sProxyDirectory);
+        }
+
+        // Add definitions.
+        foreach ($this->aDefinitions as $aDefinitions) {
+            $pBuilder->addDefinitions($aDefinitions['definition']);
         }
 
         /**
