@@ -27,7 +27,7 @@ Pull requests are the best way to propose changes to the codebase. There are war
 
 ## Bug and fix
 
-If you encounter any **bugs**, please open an [issue](https://github.com/pbraiders/stdlib/issues/new).
+If you encounter any **bugs**, please open an [issue](https://github.com/pbraiders/container/issues/new).
 
 **Great Bug Reports** tend to have:
 

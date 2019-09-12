@@ -4,7 +4,7 @@
 
 Pbraiders\Container is a factory that create PSR-11 dependency injection container: PHP-DI, League\Container, ...
 
-*Note: I use this package for my own projects, it contains only the features I need.*
+*Note: we use this package for my own projects, it contains only the features we need.*
 
 ## Table of Contents
 
@@ -12,8 +12,9 @@ Pbraiders\Container is a factory that create PSR-11 dependency injection contain
 
 ## Requirements
 
-- PHP: >=7.3
-- php-di/php-di: >=6.0
+- PHP: ~7.3
+- php-di/php-di: ~6.0
+- league/container: ~3.3
 
 ## Installation
 
@@ -27,7 +28,7 @@ Alternatively, [download a release](https://github.com/pbraiders/container/relea
 
 ## Documentation
 
-I wrote and I use this package for my own projects. And, unfortunately, I do not provide exhaustive documentation. Please read the code and the comments ;)
+We do not provide exhaustive documentation. Please read the code and the comments ;)
 
 ## Test
 
