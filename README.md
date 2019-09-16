@@ -1,6 +1,6 @@
 # Pbraiders-container
 
-[![Build Status](https://img.shields.io/travis/pbraiders/container/master.svg?style=flat-square)](https://travis-ci.com/pbraiders/container.svg?branch=master)
+[![Build Status](https://travis-ci.com/pbraiders/container.svg?branch=master)](https://travis-ci.com/pbraiders/container)
 
 Pbraiders\Container is a factory that create PSR-11 dependency injection container: PHP-DI, League\Container, ...
 
