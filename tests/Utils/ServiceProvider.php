@@ -33,7 +33,7 @@ class ServiceProvider extends AbstractServiceProvider
     public function register(): void
     {
         // Register
-        $this->getContainer()->share('service1', true);
-        $this->getContainer()->share('service2', true);
+        $this->getContainer()->share('service1', 'I_am_service_1');
+        $this->getContainer()->share('service2', 'I_am_service_2');
     }
 }

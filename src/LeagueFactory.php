@@ -43,7 +43,11 @@ class LeagueFactory extends AbstractFactory
                 $this->registerProvider($pContainer, $aDefinitions['definition']);
             } else {
                 // Case: invokable
-                $this->registerFactory($pContainer, $aDefinitions['definition'], $aDefinitions['shared']);
+                if ($aDefinitions['shared']) {
+                    $this->registerSharedFactory($pContainer, $aDefinitions['definition']);
+                } else {
+                    $this->registerFactory($pContainer, $aDefinitions['definition']);
+                }
             }
         }
 
@@ -61,7 +65,7 @@ class LeagueFactory extends AbstractFactory
     protected function registerProvider(Container $pContainer, array $aProviders): void
     {
         foreach ($aProviders as $sProvider) {
-            $pContainer->addServiceProvider(new $sProvider);
+            $pContainer->addServiceProvider($sProvider);
         }
     }
 
@@ -71,17 +75,27 @@ class LeagueFactory extends AbstractFactory
      * @param \League\Container\Container $pContainer The container
      * @param array $aFactories An array of service name/factory class name pairs. The factories should be any PHP
      *                          callbacks.
-     * @param boolean $bShared. True if the container return the same instance every time the definition is resolved.
      * @return void
      */
-    protected function registerFactory(Container $pContainer, array $aFactories, bool $bShared = false): void
+    protected function registerFactory(Container $pContainer, array $aFactories): void
     {
         foreach ($aFactories as $sServiceName => $sFactory) {
-            if ($bShared) {
-                $pContainer->share($sServiceName, $sFactory)->addArgument($pContainer);
-            } else {
-                $pContainer->add($sServiceName, $sFactory)->addArgument($pContainer);
-            }
+            $pContainer->add($sServiceName, $sFactory)->addArgument($pContainer);
+        }
+    }
+
+    /**
+     * Populates the container with factories.
+     *
+     * @param \League\Container\Container $pContainer The container
+     * @param array $aFactories An array of service name/factory class name pairs. The factories should be any PHP
+     *                          callbacks.
+     * @return void
+     */
+    protected function registerSharedFactory(Container $pContainer, array $aFactories): void
+    {
+        foreach ($aFactories as $sServiceName => $sFactory) {
+            $pContainer->share($sServiceName, $sFactory)->addArgument($pContainer);
         }
     }
 }

@@ -1,6 +1,7 @@
 # Pbraiders-container
 
 [![Build Status](https://travis-ci.com/pbraiders/container.svg?branch=master)](https://travis-ci.com/pbraiders/container)
+[![Coverage Status](https://coveralls.io/repos/github/pbraiders/container/badge.svg?branch=master)](https://coveralls.io/github/pbraiders/container?branch=master)
 
 Pbraiders\Container is a factory that create PSR-11 dependency injection container: PHP-DI, League\Container, ...
 
@@ -12,9 +13,9 @@ Pbraiders\Container is a factory that create PSR-11 dependency injection contain
 
 ## Requirements
 
-- PHP: ~7.3
-- php-di/php-di: ~6.0
-- league/container: ~3.3
+- PHP: ^7.3
+- php-di/php-di: ^6.0
+- league/container: ^3.3
 
 ## Installation
 

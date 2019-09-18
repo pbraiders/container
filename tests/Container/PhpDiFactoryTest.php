@@ -92,11 +92,11 @@ class PhpDiFactoryTest extends \PHPUnit\Framework\TestCase
     public function testCreateContainer()
     {
         $aFactories2 = [
-            'service5' => static function (): bool {
-                return true;
+            'service5' => static function (): string {
+                return 'I_am_service_5';
             },
-            'service6' => static function (): bool {
-                return true;
+            'service6' => static function (): string {
+                return 'I_am_service_6';
             },
         ];
 
@@ -112,8 +112,12 @@ class PhpDiFactoryTest extends \PHPUnit\Framework\TestCase
         $pContainer = $pFactory->createContainer();
         $this->assertTrue($pContainer instanceof ContainerInterface);
         $this->assertTrue(is_readable(self::$sCacheDirectory . DIRECTORY_SEPARATOR . 'CompiledContainer.php'));
+
         $this->assertTrue($pContainer->has(\stdClass::class), 'container has \stdClass::class');
         $this->assertTrue($pContainer->has('service5'), 'container has service5');
         $this->assertTrue($pContainer->has('service6'), 'container has service6');
+
+        $this->assertSame('I_am_service_5', $pContainer->get('service5'), 'Is service5');
+        $this->assertSame('I_am_service_6', $pContainer->get('service6'), 'Is service6');
     }
 }

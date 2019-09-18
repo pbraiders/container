@@ -113,7 +113,7 @@ class PhpDiFactory extends AbstractFactory
 
         // Compile the container for optimum performances.
         if ($this->bCompilationEnabled) {
-            if (!\is_writable($this->sCompilationCacheDirectory)) {
+            if (! \is_writable($this->sCompilationCacheDirectory)) {
                 throw new \RuntimeException(
                     \sprintf(
                         "the directory %s does not exist or is not writable.",
@@ -126,7 +126,7 @@ class PhpDiFactory extends AbstractFactory
 
         // Configure the proxy generation.
         if ($this->bProxyEnabled) {
-            if (!\is_writable($this->sProxyDirectory)) {
+            if (! \is_writable($this->sProxyDirectory)) {
                 throw new \RuntimeException(
                     \sprintf(
                         "the directory %s does not exist or is not writable.",
