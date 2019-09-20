@@ -11,6 +11,8 @@ declare(strict_types=1);
 namespace Pbraiders\Container;
 
 use DI\ContainerBuilder;
+use Pbraiders\Container\Exception\ProxyDirectoryNotExistNorWritableException;
+use Pbraiders\Container\Exception\CacheDirectoryNotExistNorWritableException;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -101,7 +103,8 @@ class PhpDiFactory extends AbstractFactory
     /**
      * Creates and configures a PHP-DI container.
      *
-     * @throws \RuntimeException If a directory does not exist or is not writable.
+     * @throws ProxyDirectoryNotExistNorWritableException If proxy directory does not exist or is not writable.
+     * @throws CacheDirectoryNotExistNorWritableException If cache directory does not exist or is not writable.
      * @throws \InvalidArgumentException when the proxy directory is null.
      * @return \Psr\Container\ContainerInterface
      */
@@ -114,7 +117,7 @@ class PhpDiFactory extends AbstractFactory
         // Compile the container for optimum performances.
         if ($this->bCompilationEnabled) {
             if (! \is_writable($this->sCompilationCacheDirectory)) {
-                throw new \RuntimeException(
+                throw new CacheDirectoryNotExistNorWritableException(
                     \sprintf(
                         "the directory %s does not exist or is not writable.",
                         $this->sCompilationCacheDirectory
@@ -127,7 +130,7 @@ class PhpDiFactory extends AbstractFactory
         // Configure the proxy generation.
         if ($this->bProxyEnabled) {
             if (! \is_writable($this->sProxyDirectory)) {
-                throw new \RuntimeException(
+                throw new ProxyDirectoryNotExistNorWritableException(
                     \sprintf(
                         "the directory %s does not exist or is not writable.",
                         $this->sProxyDirectory

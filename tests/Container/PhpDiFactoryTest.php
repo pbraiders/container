@@ -32,8 +32,8 @@ class PhpDiFactoryTest extends \PHPUnit\Framework\TestCase
     public static function setUpBeforeClass(): void
     {
         foreach ([self::$sCacheDirectory, self::$sProxyDirectory] as $sDirectory) {
-            if (!is_dir($sDirectory)) {
-                if (!mkdir($sDirectory, 0777, true)) {
+            if (! is_dir($sDirectory)) {
+                if (! mkdir($sDirectory, 0777, true)) {
                     die(\sprintf('Failed to create folder %s', $sDirectory));
                 }
             }
@@ -52,7 +52,7 @@ class PhpDiFactoryTest extends \PHPUnit\Framework\TestCase
         }
         foreach ([self::$sProxyDirectory, self::$sCacheDirectory] as $sDirectory) {
             if (is_dir($sDirectory)) {
-                if (!rmdir($sDirectory)) {
+                if (! rmdir($sDirectory)) {
                     die(\sprintf('Failed to delete folder %s', $sDirectory));
                 }
             }
